@@ -9,7 +9,7 @@ public class DesafioSemana04 {
         ArrayList<String> listaTarefas = new ArrayList<String>();
         boolean appAberto = true;
         do {
-             int gerenciadorTarefas = JOptionPane.showOptionDialog(
+            int gerenciadorTarefas = JOptionPane.showOptionDialog(
                     null,
                     "O que você deseja fazer na sua lista de tarefas?",
                     "Gerenciador de tarefas",
@@ -39,10 +39,12 @@ public class DesafioSemana04 {
                     switch (visualizarTarefas)  {
                         case 0:
                             String deletar = JOptionPane.showInputDialog("Escolha o índice da tarefa que você deseja deletar");
+                            if (deletar == null) {
+                                break;
+                            }
                             int del = Integer.parseInt(deletar) - 1;
                             listaTarefas.remove(del);
-                            break;
-                        case 1:
+                        default:
                             break;
                     }
                     break;
@@ -52,6 +54,6 @@ public class DesafioSemana04 {
                     break;
 
             }
-        } while (appAberto == true);
+        } while (appAberto);
     }
 }
