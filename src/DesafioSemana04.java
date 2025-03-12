@@ -8,6 +8,7 @@ public class DesafioSemana04 {
         String[] opcoesVisualizar = {"Deletar tarefa", "Sair"};
         ArrayList<String> listaTarefas = new ArrayList<String>();
         boolean appAberto = true;
+        int listaTamanho = 0;
         do {
             int gerenciadorTarefas = JOptionPane.showOptionDialog(
                     null,
@@ -23,7 +24,15 @@ public class DesafioSemana04 {
             switch (gerenciadorTarefas) {
                 case 0:
                     String novaTarefa = JOptionPane.showInputDialog("Digite uma nova tarefa: ");
-                    listaTarefas.add(novaTarefa + "\n");
+                    if (novaTarefa == null) {
+                        break;
+                    }
+                    if (!novaTarefa.trim().isEmpty()) {
+                        listaTarefas.add(novaTarefa + "\n");
+                        ++listaTamanho;
+                    } else {
+                        JOptionPane.showMessageDialog(null,"Você não digitou nada!");
+                    }
                     break;
                 case 1:
                     int visualizarTarefas = JOptionPane.showOptionDialog(
@@ -36,17 +45,22 @@ public class DesafioSemana04 {
                             opcoesVisualizar,
                             2
                     );
-                    switch (visualizarTarefas)  {
-                        case 0:
+                     if (listaTamanho >= 1) {
                             String deletar = JOptionPane.showInputDialog("Escolha o índice da tarefa que você deseja deletar");
                             if (deletar == null) {
                                 break;
+                            } else if (deletar.trim().isEmpty()){
+                                JOptionPane.showMessageDialog(null, "Você não digitou nada!");
+                                break;
+                            } else {
+                                int del = Integer.parseInt(deletar) - 1;
+                                listaTarefas.remove(del);
+                                --listaTamanho;
                             }
-                            int del = Integer.parseInt(deletar) - 1;
-                            listaTarefas.remove(del);
-                        default:
+                        } else {
+                            JOptionPane.showMessageDialog(null, "Não há mensagens na lista!");
                             break;
-                    }
+                        }
                     break;
                 case 2:
                     JOptionPane.showMessageDialog(null,"Finalizando programa!");
