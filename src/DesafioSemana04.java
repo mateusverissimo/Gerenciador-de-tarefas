@@ -5,7 +5,7 @@ import java.util.ArrayList;
 public class DesafioSemana04 {
     public static void main(String[] args) {
         String[] opcoes = {"Adicionar tarefa", "Visualizar tarefas", "Sair"};
-        String[] opcoesVisualizar = {"Deletar tarefa", "Sair"};
+        String[] opcoesVisualizar = {"Deletar tarefa", "Voltar"};
         ArrayList<String> listaTarefas = new ArrayList<String>();
         boolean appAberto = true;
         int listaTamanho = 0;
@@ -35,6 +35,7 @@ public class DesafioSemana04 {
                     }
                     break;
                 case 1:
+                    JOptionPane.showMessageDialog(null, "Aqui você pode visualizar a sua lista de tarefas");
                     int visualizarTarefas = JOptionPane.showOptionDialog(
                             null,
                             listaTarefas,
@@ -45,11 +46,12 @@ public class DesafioSemana04 {
                             opcoesVisualizar,
                             2
                     );
-                     if (listaTamanho >= 1) {
+                    if (visualizarTarefas == 0) {
+                        if (listaTamanho >= 1) {
                             String deletar = JOptionPane.showInputDialog("Escolha o índice da tarefa que você deseja deletar");
                             if (deletar == null) {
                                 break;
-                            } else if (deletar.trim().isEmpty()){
+                            } else if (deletar.trim().isEmpty()) {
                                 JOptionPane.showMessageDialog(null, "Você não digitou nada!");
                                 break;
                             } else {
@@ -61,6 +63,9 @@ public class DesafioSemana04 {
                             JOptionPane.showMessageDialog(null, "Não há mensagens na lista!");
                             break;
                         }
+                    } else {
+                        break;
+                    }
                     break;
                 case 2:
                     JOptionPane.showMessageDialog(null,"Finalizando programa!");
