@@ -6,7 +6,7 @@ public class DesafioSemana04 {
     public static void main(String[] args) {
         String[] opcoes = {"Adicionar tarefa", "Visualizar tarefas", "Sair"};
         String[] opcoesVisualizar = {"Deletar tarefa", "Voltar"};
-        ArrayList<String> listaTarefas = new ArrayList<String>();
+        ArrayList<String> listaTarefas = new ArrayList<>();
         boolean appAberto = true;
         int listaTamanho = 0;
         do {
@@ -60,7 +60,7 @@ public class DesafioSemana04 {
                                 --listaTamanho;
                             }
                         } else {
-                            JOptionPane.showMessageDialog(null, "Não há mensagens na lista!");
+                            JOptionPane.showMessageDialog(null, "Não há tarefas na lista!");
                             break;
                         }
                     } else {
